@@ -75,62 +75,6 @@ describe('View: Customers', () => {
     })
   })
 
-  describe('Submit customer', () => {
-    it('should trigger submit of new customer with valid form', () => {
-      const $ctrl: CustomersView = getController()
-      const addCustomerSpy: sinon.SinonSpy = sandbox.spy(API, 'addCustomer')
-
-      customerMock = {
-        firstName: 'Some Name',
-        lastName: 'Some Surname',
-        address: 'Some Address',
-        city: 'Some City'
-      } as ICustomer
-
-      form.$valid = true
-      $ctrl.newCustomer = customerMock
-
-      $rootScope.$apply()
-      $ctrl.handleSubmit(form)
-      $rootScope.$apply()
-
-      expect(addCustomerSpy).to.have.been.calledWith(customerMock)
-      expect($ctrl.newCustomer).to.be.empty
-      expect(form.$setPristine).to.have.been.called
-      expect(form.$setUntouched).to.have.been.called
-    })
-
-    it('should prevent submit of new customer with invalid form', () => {
-      const $ctrl: CustomersView = getController()
-      const errorSetTouchedSpy: sinon.SinonSpy = sandbox.spy()
-
-      sandbox.spy(API, 'addCustomer')
-
-      customerMock = {
-        firstName: '',
-        lastName: 'Some Surname',
-        address: 'Some Address',
-        city: 'Some City'
-      } as ICustomer
-
-      form.$valid = false
-      form.$error.required = [
-        {
-          $setTouched: errorSetTouchedSpy
-        }
-      ]
-      $ctrl.newCustomer = customerMock
-
-      $rootScope.$apply()
-      $ctrl.handleSubmit(form)
-      $rootScope.$apply()
-
-      expect(API.addCustomer).to.not.have.been.called
-      expect($ctrl.newCustomer).to.not.be.empty
-      expect(errorSetTouchedSpy).to.have.been.called
-    })
-  })
-
   describe('Remove customer', () => {
     it('should trigger removal of customer', () => {
       const $ctrl: CustomersView = getController()

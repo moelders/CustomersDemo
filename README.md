@@ -1,10 +1,10 @@
 # Customers Demo
 
-[![Build Status](https://travis-ci.com/RecuencoJones/CustomersDemo.svg?token=aEFEyxH22R2zBRmM2Yab&branch=develop)](https://travis-ci.com/RecuencoJones/CustomersDemo)
+[![Build Status](https://travis-ci.com/moelders/CustomersDemo.svg?token=aEFEyxH22R2zBRmM2Yab&branch=develop)](https://travis-ci.com/moelders/CustomersDemo)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com)
-[![ncloc](https://sonarqube.com/api/badges/measure?key=RecuencoJones.CustomersDemo%3Adevelop&metric=ncloc)](https://sonarqube.com/dashboard?id=RecuencoJones.CustomersDemo%3Adevelop)
-[![coverage](https://sonarqube.com/api/badges/measure?key=RecuencoJones.CustomersDemo%3Adevelop&metric=coverage)](https://sonarqube.com/dashboard?id=RecuencoJones.CustomersDemo%3Adevelop)
-[![sqale_debt_ratio](https://sonarqube.com/api/badges/measure?key=RecuencoJones.CustomersDemo%3Adevelop&metric=sqale_debt_ratio)](https://sonarqube.com/dashboard?id=RecuencoJones.CustomersDemo%3Adevelop)
+[![ncloc](https://sonarqube.com/api/badges/measure?key=moelders.CustomersDemo%3Adevelop&metric=ncloc)](https://sonarqube.com/dashboard?id=moelders.CustomersDemo%3Adevelop)
+[![coverage](https://sonarqube.com/api/badges/measure?key=moelders.CustomersDemo%3Adevelop&metric=coverage)](https://sonarqube.com/dashboard?id=moelders.CustomersDemo%3Adevelop)
+[![sqale_debt_ratio](https://sonarqube.com/api/badges/measure?key=moelders.CustomersDemo%3Adevelop&metric=sqale_debt_ratio)](https://sonarqube.com/dashboard?id=moelders.CustomersDemo%3Adevelop)
 
 ## Requirements
 
@@ -40,7 +40,6 @@ This will run all test suites and generate unit coverage reports under `test/res
 
 ### Other tasks
 
-- `npm run db`: Run a mock API server based on customers JSON.
 - `npm run lint`: Check sources are compliant with the styleguide.
 - `npm run doc`: Generate documentation output.
 
@@ -118,13 +117,6 @@ templates, etc. and creating JavaScript bundles that can be easily imported in t
 handling dependencies via ordered script tags.
 
 - [Webpack homepage](https://webpack.js.org/)
-
-#### Dev Server
-
-Webpack dev server adds a simple server to the bundler with watch over the source code, every time there is a change it
-will update the bundle and reload the application or replace changed modules on-the-fly.
-
-- [Webpack Dev Server documentation](https://webpack.js.org/configuration/dev-server/)
 
 #### CommonsChunkPlugin
 

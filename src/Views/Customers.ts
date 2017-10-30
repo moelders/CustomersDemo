@@ -19,25 +19,6 @@ export class CustomersView implements ng.IController {
   ) {}
 
   /**
-   * Handle new customer creation.
-   */
-  public handleSubmit(form: ng.IFormController): void {
-    if (form.$valid) {
-      this.API.addCustomer(this.newCustomer)
-      .then(() => this.populateCustomers())
-      .then(() => {
-        this.newCustomer = {} as ICustomer
-        form.$setPristine()
-        form.$setUntouched()
-      })
-    } else {
-      form.$error.required.forEach((error) => {
-        error.$setTouched()
-      })
-    }
-  }
-
-  /**
    * Handle click on customer orders, navigate to customer orders view.
    *
    * @param id - unique id of customer from which to retrieve orders.

@@ -5,7 +5,7 @@ node_js:
 
 addons:
   sonarqube:
-    organization: 'recuencojones-github'
+    organization: 'moelders-github'
     branches:
       - develop
 

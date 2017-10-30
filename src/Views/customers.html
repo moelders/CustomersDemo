@@ -1,43 +1,4 @@
 <div class="container">
-  <div class="row mb-4">
-    <div class="col-md-12">
-      <form class="customer-form"
-            name="form"
-            novalidate
-            data-ng-submit="vm.handleSubmit(form)">
-        <form-input data-name="firstName"
-            data-placeholder="First Name"
-            data-label="First Name"
-            data-model="vm.newCustomer.firstName"
-            data-form="form">
-        </form-input>
-        <form-input data-name="lastName"
-            data-placeholder="Last Name"
-            data-label="Last Name"
-            data-model="vm.newCustomer.lastName"
-            data-form="form">
-        </form-input>
-        <form-input data-name="address"
-            data-placeholder="Address"
-            data-label="Address"
-            data-model="vm.newCustomer.address"
-            data-form="form">
-        </form-input>
-        <form-input data-name="city"
-            data-placeholder="City"
-            data-label="City"
-            data-model="vm.newCustomer.city"
-            data-form="form">
-        </form-input>
-        <div class="form-group form-button">
-          <button class="btn btn-primary"
-                  type="submit">
-            Add Customer
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
   <div class="row">
     <customer-card
         class="col-sm-6 col-md-4 col-lg-3 mb-4"

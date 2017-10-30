@@ -1,21 +1,15 @@
+import { find, remove } from 'lodash'
 import { Inject } from '../Decorators/Inject'
 import { ICustomer } from '../Models/ICustomer'
 
-export type GetCustomersResponse = ng.IHttpPromiseCallbackArg<Array<ICustomer>>
-export type GetCustomerResponse = ng.IHttpPromiseCallbackArg<ICustomer>
-export type CreateCustomerResponse = ng.IHttpPromiseCallbackArg<number>
-export type DeleteCustomerResponse = ng.IHttpPromiseCallbackArg<{}>
-
-@Inject('$http', '$location')
+@Inject('$q')
 export class API {
-  private port = 3000
-  private apiUrl: string
+  private customers: Array<ICustomer>
 
   public constructor(
-    private $http: ng.IHttpService,
-    private $location: ng.ILocationService
+    private $q: ng.IQService
   ) {
-    this.apiUrl = `http://${this.$location.host()}:${this.port}`
+    this.customers = require('../Assets/customer.json')
   }
 
   /**
@@ -24,24 +18,8 @@ export class API {
    * @return promise handler.
    */
   public getCustomers(): ng.IPromise<Array<ICustomer>> {
-    return this.$http.get(`${this.apiUrl}/customers`)
-    .then(({data}: GetCustomersResponse) => data)
-    .catch(() => {
-      throw new Error('Error retrieving customers data')
-    })
-  }
-
-  /**
-   * Add a new customer.
-   *
-   * @param customer - customer data to add.
-   * @returns promise handler.
-   */
-  public addCustomer(customer: ICustomer): ng.IPromise<number> {
-    return this.$http.post(`${this.apiUrl}/customers`, customer)
-    .then(({data}: CreateCustomerResponse) => data)
-    .catch(() => {
-      throw new Error(`Error creating new customer ${customer}`)
+    return this.$q((resolve) => {
+      resolve(this.customers)
     })
   }
 
@@ -52,10 +30,8 @@ export class API {
    * @return promise handler.
    */
   public getCustomerWithId(id: number): ng.IPromise<ICustomer> {
-    return this.$http.get(`${this.apiUrl}/customers/${id}`)
-    .then(({data}: GetCustomerResponse) => data)
-    .catch(() => {
-      throw new Error(`Customer with id ${id} does not exist.`)
+    return this.$q((resolve) => {
+      resolve(find(this.customers, {id}))
     })
   }
 
@@ -66,10 +42,9 @@ export class API {
    * @returns promise handler.
    */
   public removeCustomerWithId(id: number): ng.IPromise<{}> {
-    return this.$http.delete(`${this.apiUrl}/customers/${id}`)
-    .then(({data}: DeleteCustomerResponse) => data)
-    .catch(() => {
-      throw new Error(`Error removing customer with id ${id}`)
+    return this.$q((resolve) => {
+      remove(this.customers, {id})
+      resolve()
     })
   }
 }
